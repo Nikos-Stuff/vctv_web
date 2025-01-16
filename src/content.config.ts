@@ -51,8 +51,8 @@ const canalplus = defineCollection({
 })
 
 
-const products = defineCollection({
-  loader: glob({ pattern: '**\/[^_]*.md', base: "./src/content/products" }),
+const news = defineCollection({
+  loader: glob({ pattern: '**\/[^_]*.md', base: "./src/content/news" }),
   schema: z.object({
     title: z.string(),
     summary: z.string(),
@@ -123,4 +123,4 @@ const legal = defineCollection({
   }),
 })
 
-export const collections = { work, blog, events, legal, team, otherprojects, canalplus, nnb_workshop, products}
+export const collections = { work, blog, events, legal, team, otherprojects, canalplus, nnb_workshop, news}

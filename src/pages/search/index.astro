@@ -12,10 +12,10 @@ const posts = (await getCollection("blog"))
 const projects = (await getCollection("events"))
   .filter(post => !post.data.draft)
 
-const teams = (await getCollection("team"))
+const news = (await getCollection("news"))
     .filter(team => !team.data.draft)
 
-const data = [...posts, ...projects, ...teams] as CollectionEntry<"blog">[]
+const data = [...posts, ...projects, ...news] as CollectionEntry<"blog">[]
 ---
 
 <PageLayout title={SEARCH.TITLE} description={SEARCH.DESCRIPTION}>

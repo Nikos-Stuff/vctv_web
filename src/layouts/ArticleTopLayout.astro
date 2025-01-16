@@ -3,7 +3,7 @@ import type { CollectionEntry } from "astro:content"
 import { formatDate, readingTime } from "@lib/utils"
 
 type Props = {
-  entry: CollectionEntry<"events"> | CollectionEntry<"blog"> | CollectionEntry<"products">  | CollectionEntry<"canalplus">
+  entry: CollectionEntry<"events"> | CollectionEntry<"blog"> | CollectionEntry<"news">  | CollectionEntry<"canalplus">
 }
 
 const { entry } = Astro.props
@@ -13,7 +13,7 @@ const { title, summary, date } = data
 const demoUrl = collection === "events" ? data.demoUrl : null
 const repoUrl = collection === "events" ? data.repoUrl : null
 
-const imageUrl = (collection === "events" || collection === "products" || collection === "canalplus") ? data.imageUrl : null;
+const imageUrl = (collection === "events" || collection === "news" || collection === "canalplus") ? data.imageUrl : null;
 
 ---
 

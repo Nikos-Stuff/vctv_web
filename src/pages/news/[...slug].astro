@@ -6,30 +6,30 @@ import BottomLayout from "@layouts/BottomLayout.astro"
 import ArticleTopLayout from "@layouts/ArticleTopLayout.astro"
 import ArticleBottomLayout from "@layouts/ArticleBottomLayout.astro"
 
-// Create the static events pages
+// Create the static blog pages
 export async function getStaticPaths() {
-	const projects = await getCollection("canalplus")
-	return projects.map((project) => ({
-		params: { slug: project.id },
-		props: project,
+	const products = await getCollection("news")
+	return products.map((product) => ({
+		params: { slug: product.id },
+		props: product,
 	}))
 }
 
-// Get the requested project
-type Props = CollectionEntry<"canalplus">
-const project = Astro.props
-const { title, summary } = project.data
+// Get the requested post
+type Props = CollectionEntry<"news">
+const product = Astro.props
+const { title, summary } = product.data
 ---
 
 <PageLayout title={title} description={summary}>
   <TopLayout>
     <div class="animate">
-      <ArticleTopLayout entry={project} />
+      <ArticleTopLayout entry={product}/>
     </div>
   </TopLayout>
   <BottomLayout>
     <div class="animate">
-      <ArticleBottomLayout entry={project} />
+      <ArticleBottomLayout entry={product} />
     </div>
   </BottomLayout>
 </PageLayout>

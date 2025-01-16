@@ -2,7 +2,7 @@ import type { Site, Page, Links, Socials } from "@types"
 
 // Global
 export const SITE: Site = {
-  TITLE: "Sezam",
+  TITLE: "VCTV",
   DESCRIPTION: "Randomness since 2018.",
   AUTHOR: "Niko's Stuff",
 }
@@ -45,8 +45,8 @@ export const SEARCH: Page = {
 }
 
 // Products Page 
-export const PRODUCTS: Page = {
-  TITLE: "Produkty",
+export const NEWS: Page = {
+  TITLE: "Newsy",
   DESCRIPTION: "Recent events I have worked on.",
 }
 
@@ -57,21 +57,13 @@ export const LINKS: Links = [
     HREF: "/", 
   },
   {
-    TEXT: "Produkty",
-    HREF: "/products",
-  },
-  {
-    TEXT: "Lokalizacja",
-    HREF: "/localization",
+    TEXT: "Newsy",
+    HREF: "/news",
   },
   {
     TEXT: "O Nas",
     HREF: "/about",
-  },
-  {
-    TEXT: "Narzędzia",
-    HREF: "/tools",
-  },
+  }
 ]
 
 // Socials

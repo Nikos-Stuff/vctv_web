@@ -5,7 +5,7 @@ type Props = {
   entry:
     | CollectionEntry<"blog">
     | CollectionEntry<"events">
-    | CollectionEntry<"products">
+    | CollectionEntry<"news">
     | CollectionEntry<"canalplus">
   pill?: boolean;
 };
@@ -17,8 +17,8 @@ export default function ArrowCard({ entry, pill }: Props) {
         return `/blog/${entry.id}`;
       case "events":
         return `/events/${entry.id}`;
-      case "products":
-          return `/products/${entry.id}`;
+      case "news":
+          return `/news/${entry.id}`;
       case "canalplus":
           return `/canalplus/${entry.id}`;
       default:
@@ -98,7 +98,7 @@ export default function ArrowCard({ entry, pill }: Props) {
             />
           </svg>
         </a>
-      ) : entry.collection === "products" ? (
+      ) : entry.collection === "news" ? (
         // Products cart design
         <a
         href={getEntryLink()}

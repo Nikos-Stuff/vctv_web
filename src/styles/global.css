@@ -37,6 +37,14 @@
     font-style: normal;
     font-display: swap;
   }
+
+  @font-face {
+    font-family: "Sixtyfour";
+    src: url("/fonts/sixtyfour.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
 html {
@@ -49,14 +57,14 @@ html {
 }
 
 html.dark {
-  color-scheme: #001d29;
-  background-color: #001d29;
+  color-scheme: #2b0000;
+  background-color: #2b0000;
 }
 
 html,
 body {
   @apply h-full w-full antialiased;
-  @apply bg-white dark:bg-[#001d29];
+  @apply bg-white dark:bg-[#2b0000];
   @apply text-black/75 dark:text-white/75;
 }
 
@@ -65,7 +73,7 @@ body {
 }
 
 main {
-  @apply flex flex-col flex-1 bg-white dark:bg-[#001d29];
+  @apply flex flex-col flex-1 bg-white dark:bg-[#2b0000];
 }
 
 header {
@@ -77,7 +85,7 @@ header:not(.scrolled) {
 }
 
 header.scrolled {
-  @apply bg-white/75 dark:bg-[#001d29]/50;
+  @apply bg-white/75 dark:bg-[#2b0000]/50;
   @apply backdrop-blur-sm saturate-200;
 }
 
