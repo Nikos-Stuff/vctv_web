@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content"
+import PageLayout from "@layouts/PageLayout.astro"
+import TopLayout from "@layouts/TopLayout.astro"
+import BottomLayout from "@layouts/BottomLayout.astro"
+import Products from "@components/Products"
+import { PRODUCTS } from "@consts"
+
+const products = (await getCollection("products"))
+  .filter(product => !product.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+
+const tags = [...new Set(products.flatMap(post => post.data.tags))]
+  .sort((a, b) => a.localeCompare(b))
+---
+
+<PageLayout title={PRODUCTS.TITLE} description={PRODUCTS.DESCRIPTION}>
+  <TopLayout>
+    <div class="animate page-heading">
+      {PRODUCTS.TITLE}
+    </div>
+  </TopLayout>
+  <BottomLayout>
+    <div class="animate">
+      <Products client:load tags={tags} data={products} />
+    </div>
+  </BottomLayout>
+</PageLayout>
+
+

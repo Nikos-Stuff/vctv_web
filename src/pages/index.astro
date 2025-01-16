@@ -1,0 +1,210 @@
+---
+// export const prerender = false;
+
+import {getCollection} from "astro:content"
+import PageLayout from "@layouts/PageLayout.astro"
+import ArrowCard from "@components/ArrowCard"
+import {SITE} from "@consts"
+
+const posts = (await getCollection("blog"))
+    .filter(post => !post.data.draft)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .slice(0, 3)
+
+const events = (await getCollection("events"))
+    .filter(event => !event.data.draft)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .slice(0, 3)
+
+const canalplus = (await getCollection("canalplus"))
+    .filter(event => !event.data.draft)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .slice(0, 3)
+
+
+
+import TitleHeader from "../components/TitleHeader.astro";
+import Pricing_carousel from "../components/pricing_carousel.astro";
+
+---
+<PageLayout title="Główna" description={SITE.DESCRIPTION}>
+            <!-- <div class="snap-y snap-mandatory h-screen w-screen mx:auto overflow-scroll no-scrollbar"> -->
+                <div class="snap-center grid w-screen h-screen place-items-center relative text-center overflow-hidden">
+                    <div class="animate absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-80% via-transparent dark:to-[#001d29] to-white z-20"/>
+                    <img
+                            id="bg_img"
+                            src="/imgs/bg.webp"
+                            alt="Background"
+                            class="absolute w-full h-full object-cover blur-xl brightness-[0.3] saturate-[0.4] transition-opacity duration-500 opacity-0 scale-[1.5]"
+                            onload="this.classList.add('opacity-100'); this.classList.remove('opacity-0');"
+                            decoding="async"
+                            loading="eager"
+                            draggable="false"
+                    />
+                    <div class="z-10 flex flex-col items-center space-y-4">
+                        <TitleHeader text="SEZAM" sub="Twój sklep RTV AGD"/>
+                        <section class="animate animate-bounce">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                <path d="m480-259 176-177q5-5 12.5-5.5T682-436q6 6 6 12.5t-6 12.5L504-233q-5 5-10.5 7.5T480-223q-8 0-13.5-2.5T457-233L279-411q-6-5-6-12t6-13q6-6 12.5-6t13.5 6l175 177Zm0-278 176-178q5-5 12.5-4.5T682-715q6 7 6 13.5t-6 12.5L504-511q-5 4-10.5 7.5T480-500q-8 0-13.5-3.5T457-511L279-689q-6-5-6-12.5t6-13.5q6-6 12.5-6t13.5 6l175 178Z"/>
+                            </svg>
+                        </section>
+                    </div>
+                </div>
+
+
+                <div class="snap-center grid w-screen h-screen place-items-center">
+                    <!--<div class="relative">-->
+                    <!--    <div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16 overflow-hidden">-->
+                            <Pricing_carousel/>
+                    <!--    </div>-->
+                    <!--</div>-->
+                </div>
+                <div class="snap-center grid w-screen h-auto place-items-center relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="mx-auto w-screen max-w-screen-lg p-5 space-y-24 pb-16">
+                            <!-- Two-Column Layout for Blog and Projects -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-20">
+                                <!-- Blog Preview Section -->
+                                <section class="space-y-4 delay-[300ms] duration-[600ms] taos:translate-x-[-100%] [animation-iteration-count:infinite] taos:opacity-0" data-taos-offset="400">
+                                    <div>
+                                        <p class="font-semibold text-black dark:text-white text-lg">Co nowego?</p>
+                                        <a href="/blog" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2">
+                                            <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white transition-all">Wszystkie Posty</span>
+                                        </a>
+                                    </div>
+                                    <ul class="space-y-4">
+                                        {posts.map((post) => (
+                                                <li id={post.id}>
+                                                    <ArrowCard entry={post}/>
+                                                </li>
+                                        ))}
+                                    </ul>
+                                </section>
+                
+                                <!-- Project Preview Section -->
+                                <section class="space-y-4 delay-[300ms] duration-[600ms] taos:translate-x-[100%] [animation-iteration-count:infinite] taos:opacity-0" data-taos-offset="400">
+                                    <div>
+                                        <p class="font-semibold text-black dark:text-white text-lg">Wydarzenia</p>
+                                        <a href="/events" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2">
+                                            <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white transition-all">Zobacz Wszystkie</span>
+                                        </a>
+                                    </div>
+                                    <ul class="space-y-4">
+                                        {events.map((event) => (
+                                                <li id={event.id}>
+                                                    <ArrowCard entry={event}/>
+                                                </li>
+                                        ))}
+                                    </ul>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="snap-center grid w-screen h-auto place-items-center relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="mx-auto w-screen max-w-screen-lg p-5 space-y-24 pb-16">
+
+                            <div class="space-y-4 delay-[300ms] duration-[600ms] taos:translate-x-[-100%] [animation-iteration-count:infinite] taos:opacity-0" data-taos-offset="200">
+                                <svg class="fill-black dark:fill-white transition-all h-[5rem] w-[5rem] md:h-[6rem] md:w-[6rem] lg:h-[8rem] lg:w-[8rem]"  xmlns="http://www.w3.org/2000/svg" height="150px" viewBox="0 -960 960 960" width="150px" fill="#e8eaed">
+                                    <path d="M464.9-165q9.2 0 18.9-4.25T500-180l300.5-300.5q18-18 28.25-34T839-552q0-22-9.75-41.5T802.5-631l-137-136.5q-16-16-33.25-23.5T595-798.5q-20 0-38.25 9.75T523.5-763.5L484-724l72.5 72.5q10.5 11 16.25 24.75T578.5-599q0 27.5-17.42 45-17.43 17.5-44.58 17.5-14 0-27.25-4.25T465.5-555.5l-51.5-50q-9-9-23-9t-23 9L221.5-459q-7.5 7.7-11.25 16.85Q206.5-433 206.5-424q0 16 10 26t26 10q9 0 18.75-4.5T277.5-403l113.14-113.64q3.36-3.36 8.61-3.61t9.75 3.75q4.5 5 4.5 9.5t-4.41 8.86L295.5-384.5q-7.5 7.5-11.25 16.68-3.75 9.19-3.75 18.4 0 14.92 10.5 25.42 10.5 10.5 25.83 10.5 9.17 0 18.92-4.5 9.75-4.5 15.74-10.49l125.65-125.6q3.36-3.41 8.61-3.91t9.75 4q4.5 4.5 4.5 9.25t-4.41 9.11L370-310.5q-7 7-11 16.53-4 9.54-4 18.57 0 15.4 10.25 25.65 10.25 10.25 25.58 10.25 9.17 0 18.32-3.75T426-254.5l125.14-125.59q3.36-3.41 8.61-3.66t9.75 3.75q4.5 5 4.5 9.5t-4.36 8.86L444.5-236q-7.5 7.7-11.25 17.85Q429.5-208 429.5-200q0 16 10.5 25.5t24.9 9.5Zm.6 25.5q-28.5 0-48-21.25t-13-52.75q-34 2-56-17.25t-19-57.25q-38 2-58.25-18.25T255-362.5q-30.5 3-52.5-13.6-22-16.59-22-48.4 0-14 5-27.75t16-24.75L351-626.5q16.11-16 39.8-16 23.7 0 40.06 15.86L481.5-576q6 6 15 10.25t20 4.25q14 0 25-10.11 11-10.12 11-26.31 0-11.08-4.25-20.08-4.25-9-10.22-14.98L403.5-767.5Q388-783 370.91-790.75q-17.09-7.75-36.91-7.75-20 0-36.5 7.25t-32 23.25L154-657q-25 25-30.25 61t9.75 68q2 4.5-.5 9.5t-7.08 7q-4.59 2-9.75-.25Q111-514 108.5-519 93-559 98-601t36.5-73.5l113-113q18-18 39.25-27.25T335-824q25.93 0 46.85 10 20.93 10 41.01 30l42.03 42 42.03-42q19.58-20 40.92-30 21.33-10 47.16-10 29 0 50.75 10.5t39.77 28.46L821.5-649.5q20.5 21 31.75 45.5t11.25 52q0 27-11.75 47.25T820-463L518-161q-12 12-25 16.75t-27.5 4.75ZM321-619.5Z"/>
+                                </svg>
+                               
+                                <p class="text-xl sm:text-3xl md:text-4xl font-bold uppercase">Profesjonalizm</p>
+                                <p>Nasi doświadczeni pracownicy są gotowi służyć Ci pomocą i doradą, pomagając wybrać najlepsze rozwiązania dostosowane do Twoich potrzeb.
+                                    Naszym celem jest zapewnienie Ci kompleksowej obsługi oraz zadowolenia z zakupów.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="snap-center grid w-screen h-auto place-items-center relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="mx-auto w-screen max-w-screen-lg p-5 space-y-24 pb-16">
+
+<div class="flex flex-col items-end space-y-4 delay-[300ms] duration-[600ms] taos:translate-x-[100%] [animation-iteration-count:infinite] taos:opacity-0" data-taos-offset="200">
+    <svg class="fill-black dark:fill-white transition-all h-[5rem] w-[5rem] md:h-[6rem] md:w-[6rem] lg:h-[8rem] lg:w-[8rem]" xmlns="http://www.w3.org/2000/svg" height="150px" viewBox="0 -960 960 960" width="150px" fill="#e8eaed">
+        <path d="m557.5-197 217-216.5q3.5-3.5 8.5-4t10 4q4.5 4.5 4.5 9.25T793-395L578-180q-9 8.5-20.5 8.5t-20-8.5l-102-102q-4-3.5-4.5-8.75t4.5-9.75q4.5-4.5 9-4.5t9.5 4.5L557.5-197ZM289-400.5v-27h-86.5q-5.5 0-9.25-3.5t-3.75-9q0-5.5 3.75-9.25t9.25-3.75H388v-133.5H217q-11 0-19.25-8t-8.25-19v-130q0-10.5 8.25-18.75T217-770.5h72v-27q0-5.5 3.75-9.25t9.25-3.75q5 0 8.75 3.75t3.75 9.25v27H401q5 0 8.75 3.75t3.75 9.25q0 5.5-3.75 9T401-745H215v133h171.5q11 0 19 8.5t8 19V-455q0 11-8 19.25t-19 8.25h-72v27q0 5.5-3.75 9T302-388q-5.5 0-9.25-3.5t-3.75-9Z" />
+    </svg>
+
+    <p class="text-xl sm:text-3xl md:text-4xl font-bold uppercase text-right">Przystępne Ceny</p>
+    <p class="text-right">Dodatkowo, dbamy o konkurencyjność cen, abyś mógł cieszyć się jakością bez przepłacania.</p>
+</div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="snap-center grid w-screen h-auto place-items-center relative overflow-clip text-gray-300
+                           bg-black delay-[300ms] duration-[600ms] taos:bg-transparent taos:opacity-0 [animation-iteration-count:infinite] bg-center bg-no-repeat bg-cover"
+                           data-taos-offset="400" style="background-image: url(imgs/canal_plus.webp)">
+                           <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-md h-full w-full"/>
+                    <div class="relative z-10">
+                        <div class="mx-auto w-screen max-w-screen-lg p-5 space-y-24 pb-16">
+
+                            <div class="relative h-[1000px] pt-52">
+                                <div class="sticky top-1/2 transform -translate-y-1/2 flex flex-col items-center space-y-1">
+                                  <p class="text-center p-1 text-2xl sm:text-4xl md:text-6xl font-bold uppercase 
+                                      delay-[300ms] duration-[600ms] taos:[transform:translate3d(0,200px,0)_scale(1.2)] taos:opacity-0 [animation-iteration-count:infinite]" 
+                                      data-taos-offset="220">
+                                    Partner CANAL+
+                                  </p>
+                                  <p class="text-center p-1 
+                                      delay-[600ms] duration-[600ms] taos:[transform:translate3d(0,200px,0)_scale(1.2)] taos:opacity-0 [animation-iteration-count:infinite]" 
+                                      data-taos-offset="240">
+                                    Nie szukaj dalej, nigdzie nie znajdziesz więcej.
+                                  </p>
+                                </div>
+                              </div>
+                              
+    
+                        <p class="text-center text-xl sm:text-2xl md:text-4xl font-bold uppercase 
+                             delay-[300ms] duration-[600ms] taos:[transform:translate3d(0,200px,0)_scale(1.2)] taos:opacity-0 [animation-iteration-count:infinite]" 
+                             data-taos-offset="100">
+                            Nasze wyróżnione nowości:
+                        </p>
+  
+                        <section class="space-y-4 delay-[300ms] duration-[600ms] taos:translate-x-[100%] [animation-iteration-count:infinite] taos:opacity-0" data-taos-offset="400">
+                            <div>
+                                <a href="/canalplus" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2">
+                                    <span class="text-gray-300 hover:text-white transition-all">Zobacz Wszystkie</span>
+                                </a>
+                            </div>
+                            <ul class="space-y-4">
+                                {canalplus.map((product) => (
+                                        <li id={product.id}>
+                                            <ArrowCard entry={product}/>
+                                        </li>
+                                ))}
+                            </ul>
+                        </section>
+
+                            
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="snap-center grid w-screen h-auto place-items-center relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="mx-auto w-screen max-w-screen-lg p-5 space-y-24 pb-16">
+
+                            <div class="flex flex-col items-center justify-center space-y-4 text-center delay-[300ms] duration-[600ms] taos:[transform:translate3d(0,50px,0)_scale(1.2)] [animation-iteration-count:infinite] taos:opacity-0" data-taos-offset="100">
+                                <svg class="fill-black dark:fill-white transition-all h-[5rem] w-[5rem] md:h-[6rem] md:w-[6rem] lg:h-[8rem] lg:w-[8rem]" xmlns="http://www.w3.org/2000/svg" height="150px" viewBox="0 -960 960 960" width="150px" fill="#e8eaed">
+                                    <path d="M480.74-295q46.94 0 87.89-23t66.76-63.22q4.11-5.28-.2-12.28-4.32-7-12.34-7-2.61 0-4.73 1.25Q616-398 614.5-396q-23 34.5-58 54.75T480-321q-41.5 0-76.5-20.25T346-396q-2-2-4.17-3.25-2.16-1.25-4.26-1.25-8.51 0-12.79 6.5-4.28 6.5-.01 13.39 26.23 40.11 67.18 62.86Q432.91-295 480.74-295Zm127.94-245.5q16.32 0 27.57-11.43 11.25-11.42 11.25-27.75 0-16.32-11.43-27.57-11.42-11.25-27.75-11.25-16.32 0-27.57 11.43-11.25 11.42-11.25 27.75 0 16.32 11.43 27.57 11.42 11.25 27.75 11.25Zm-257 0q16.32 0 27.57-11.43 11.25-11.42 11.25-27.75 0-16.32-11.43-27.57-11.42-11.25-27.75-11.25-16.32 0-27.57 11.43-11.25 11.42-11.25 27.75 0 16.32 11.43 27.57 11.42 11.25 27.75 11.25ZM480.24-137q-71.15 0-133.87-27.02-62.72-27.03-109.12-73.35-46.4-46.33-73.32-108.83Q137-408.7 137-479.76q0-71.15 27.02-133.87 27.03-62.72 73.35-109.12 46.33-46.4 108.83-73.32Q408.7-823 479.76-823q71.15 0 133.87 27.02 62.72 27.03 109.12 73.35 46.4 46.33 73.32 108.83Q823-551.3 823-480.24q0 71.15-27.02 133.87-27.03 62.72-73.35 109.12-46.33 46.4-108.83 73.32Q551.3-137 480.24-137ZM480-480Zm-.03 317.5q132.53 0 225.03-92.47 92.5-92.46 92.5-225 0-132.53-92.47-225.03-92.46-92.5-225-92.5-132.53 0-225.03 92.47-92.5 92.46-92.5 225 0 132.53 92.47 225.03 92.46 92.5 225 92.5Z"/>
+                                </svg>
+                                <p class="text-xl sm:text-3xl md:text-4xl font-bold uppercase">Czekamy na ciebie!</p>
+                                <p>Zapraszamy serdecznie!<br/>
+                                    Telefon <strong>18 3370 235</strong><br/>
+                                    Godziny Otwarcia:<strong> Pon-Pt 9:00-17:00 | Sob 9:00-13:00</strong>
+                                </p>
+                            </div>                            
+                            
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+</PageLayout>

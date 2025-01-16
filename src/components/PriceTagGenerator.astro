@@ -1,0 +1,250 @@
+---
+---
+<div class="min-h-[985px] content-center items-center justify-center mr-auto ml-auto p-6 bg-transparent rounded-lg hover:scale-105 hover:bg-black/5 border hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-all duration-300 ease-in-out">
+    <form id="form" method="post" enctype="multipart/form-data" class="space-y-6">
+
+        <!-- Simple Form -->
+        <div id="root_form" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                <!-- Dropdown for Typ Cenówki -->
+            <div class="col-span-1">
+                <label for="type" class="block text-sm font-semibold">Typ Cenówki:</label>
+                <select id="type" name="type" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500">
+                    <option value="standard" selected class="dark:bg-black bg-white">Standardowy</option>
+                    <option value="alternative" class="dark:bg-black bg-white">Alternatywny</option>
+                </select>
+            </div>
+
+            <!-- Dropdown for Rozmiar -->
+            <div class="col-span-1">
+                <label for="resize" class="block text-sm font-semibold">Rozmiar:</label>
+                <select id="resize" name="resize" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500">
+                    <option value="" selected class="dark:bg-black bg-white">Domyślny (870x1235)</option>
+                    <option value="2480x3508" class="dark:bg-black bg-white">A4 (2480x3508)</option>
+                    <option value="1279x1732" class="dark:bg-black bg-white">TV (1279x1732)</option>
+                </select>
+            </div>
+
+
+            <div class="col-span-1">
+                <label for="atitle" class="block text-sm font-semibold ">Tytuł (np HP):</label>
+                <input type="text" id="atitle" name="title" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500">
+                <p class="text-sm text-gray-500 mt-2"><em>Wpisując popularną nazwe marki np Samsung wybierzemy automatycznie logo.</em></p>
+            </div>
+    
+            <div class="col-span-1">
+                <label for="desc" class="block text-sm font-semibold">Podtytuł (np MODEL ABC123):</label>
+                <input type="text" id="desc" name="desc" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
+    
+        <!-- Wyróżnienie Section -->
+        <div id="slots_1" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="col-span-1">
+                <label for="sub1" class="block text-sm font-semibold">Wyróżnienie 1:</label>
+                <input type="text" id="sub1" name="sub1" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500">
+            </div>
+    
+            <div class="col-span-1">
+                <label for="text1" class="block text-sm font-semibold">Opis 1:</label>
+                <textarea id="text1" name="text1" rows="2" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+        </div>
+    
+        <div id="slots_2" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="col-span-1">
+                <label for="sub2" class="block text-sm font-semibold">Wyróżnienie 2:</label>
+                <input type="text" id="sub2" name="sub2" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500">
+            </div>
+    
+            <div class="col-span-1">
+                <label for="text2" class="block text-sm font-semibold">Opis 2:</label>
+                <textarea id="text2" name="text2" rows="2" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+        </div>
+    
+        <div id="slots_3" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="col-span-1">
+                <label for="sub3" class="block text-sm font-semibold">Wyróżnienie 3:</label>
+                <input type="text" id="sub3" name="sub3" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500">
+            </div>
+    
+            <div class="col-span-1">
+                <label for="text3" class="block text-sm font-semibold">Opis 3:</label>
+                <textarea id="text3" name="text3" rows="2" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500"></textarea>
+            </div>
+        </div>
+    
+        <div id="extra_input">
+            <label for="text4" class="block text-sm font-semibold">Reszta Opisu:</label>
+            <textarea id="text4" name="text4" rows="9" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500"></textarea>
+        </div>
+    
+        <!-- Price Input Section -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="col-span-1">
+                <label for="zl_brutto" class="block text-sm font-semibold">Wartość:</label>
+                <input type="text" id="zl_brutto" name="zl_brutto" value="zł brutto" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500">
+            </div>
+    
+            <div class="col-span-1">
+                <label for="price" class="block text-sm font-semibold">Cena:</label>
+                <input type="text" id="price" name="price" class="mt-2 p-2 w-full border border-black/15 dark:border-white/20 rounded-lg bg-transparent focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
+    
+        <!-- Submit Button -->
+        <div class="group mt-10 p-3 gap-3 flex items-center border rounded-lg hover:scale-105 hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-all duration-300 ease-in-out">
+            <input type="submit" name="submit" value="Wygeneruj" class="w-full z-10 relative group-hover:text-black group-hover:dark:text-white text-center">
+        </div>
+    </form>
+    
+
+
+    <div id="generated" class="space-y-6 hidden">
+        <img src="/imgs/img_1.webp" alt="Img" class="relative w-auto h-auto rounded-md ml-auto mr-auto"/>
+
+        <button id="go_back" class="group w-full mt-10 p-3 gap-3 flex items-center border rounded-lg hover:scale-105 hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-all duration-300 ease-in-out">
+            <span class="w-full z-10 relative group-hover:text-black group-hover:dark:text-white text-center">
+                Wróć
+            </span>
+        </button>
+    </div>
+
+    <div id="loading" class="space-y-6 hidden">
+        <div class="p-4 flex items-center justify-center rounded-lg w-full h-full ">
+            <svg class="animate-spin h-12 w-12 mr-3 fill-black dark:fill-white" viewBox="0 -960 960 960">
+                <path d="M479.98-116q-74.81 0-141.26-27.84-66.44-27.84-116.74-78.14t-78.14-116.69Q116-405.06 116-480.15q0-75.09 28-141.47T222-738q50-50 116.6-78 66.59-28 141.4-28 7.93 0 12.96 4.77 5.04 4.78 5.04 12.58 0 7.81-5.04 12.73Q487.93-809 480-809q-136.75 0-232.88 96.17-96.12 96.18-96.12 233Q151-343 247.17-247q96.18 96 233 96Q617-151 713-247.12q96-96.13 96-232.88 0-7.98 4.96-12.99 4.95-5.01 12.76-5.01t12.54 5.04Q844-487.93 844-480q0 74.81-28 141.4Q788-272 738-222t-116.6 78q-66.61 28-141.42 28Z"/>
+            </svg>
+            <span class="">Generowanie...</span>
+        </div>
+    </div>
+
+</div>
+
+<script is:inline>
+function submitFormData(event) {
+    document.getElementById('form').scrollIntoView({
+        behavior: 'smooth',
+        block: 'center', 
+        inline: 'center'
+    });
+
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Collect data from the form fields
+    const formData = new FormData(event.target);
+
+    // Create an object to hold the data
+    const dataObject = {};
+
+    // Populate the dataObject with form data
+    formData.forEach((value, key) => {
+        if (dataObject[key]) {
+            if (Array.isArray(dataObject[key])) {
+                dataObject[key].push(value);
+            } else {
+                dataObject[key] = [dataObject[key], value];
+            }
+        } else {
+            dataObject[key] = value;
+        }
+    });
+
+    // Convert the data object into a JSON string
+    const jsonString = JSON.stringify(dataObject);
+
+    // URL encode the JSON string to send as a query parameter
+    const encodedData = encodeURIComponent(jsonString);
+
+    // Debug: Log the data we are sending
+    console.log("Sending data to the API:", jsonString);
+
+    // Show loading and hide the form
+    document.getElementById('form').classList.add('hidden');
+    document.getElementById('loading').classList.remove('hidden');
+
+    // Send the data to the target URL
+    const apiUrl = `https://api.nikostuff.com/sezam_generate?data=${encodedData}`;
+
+    // Use fetch to send the GET request
+    fetch(apiUrl)
+        .then(response => {
+            const contentType = response.headers.get('Content-Type');
+
+            if (contentType && contentType.includes('application/json')) {
+                return response.json();
+            } else if (contentType && contentType.includes('image/png')) {
+                return response.blob(); // Return blob for image response
+            } else {
+                return response.text();
+            }
+        })
+        .then(data => {
+            console.log('Response from API:', data);
+
+            setTimeout(() => {
+                if (data instanceof Blob) {
+                    // Success: Show the generated image from the Blob
+                    const imageUrl = URL.createObjectURL(data); // Convert Blob to URL
+                    document.getElementById('generated').classList.remove('hidden');
+                    document.getElementById('loading').classList.add('hidden');
+                    document.getElementById('form').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center', 
+                        inline: 'center'
+                    });
+
+                    const imageElement = document.querySelector('#generated img');
+                    imageElement.src = imageUrl; // Set the Blob URL as the source of the image
+                } else if (typeof data === 'string') {
+                    // Error: Show an alert with the cleaned error message
+                    const cleanedResponse = data.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML tags
+                    alert(`Coś poszło nie tak! Błąd: ${cleanedResponse}`);
+                    document.getElementById('form').classList.remove('hidden');
+                    document.getElementById('loading').classList.add('hidden');
+                    document.getElementById('form').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center', 
+                        inline: 'center'
+                    });
+                } else {
+                    alert('Unexpected response from the API');
+                    document.getElementById('form').classList.remove('hidden');
+                    document.getElementById('loading').classList.add('hidden');
+                    document.getElementById('form').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center', 
+                        inline: 'center'
+                    });
+                }
+            }, 500); // Wait before checking the response
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Wystąpił błąd przy połączeniu z serwerem!');
+            document.getElementById('form').classList.remove('hidden');
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('form').scrollIntoView({
+               behavior: 'smooth',
+               block: 'center', 
+               inline: 'center'
+            });
+        });
+}
+
+// Attach the function to the form's submit event
+document.getElementById('form').addEventListener('submit', submitFormData);
+
+// Go back to the form when clicking the "Go back" button
+document.getElementById('go_back').addEventListener('click', function() {
+    document.getElementById('form').classList.remove('hidden');
+    document.getElementById('generated').classList.add('hidden');
+    document.getElementById('form').scrollIntoView({
+     behavior: 'smooth',
+     block: 'center', 
+     inline: 'center'
+    });
+});
+
+</script>

@@ -1,0 +1,48 @@
+---
+import { SITE, LINKS } from "@consts"
+import { cn } from "@lib/utils"
+const { pathname } = Astro.url
+const subpath = pathname.match(/[^/]+/g)
+---
+
+<div id="drawer" class="bg-opacity-75 dark:bg-opacity-75 backdrop-blur-sm saturate-200 fixed inset-0 h-0 z-40 overflow-hidden flex flex-col items-center justify-center md:hidden bg-neutral-100 dark:bg-neutral-900 transition-[height] duration-300 ease-in-out">
+  <nav class="flex flex-col items-center space-y-2">
+    {
+      LINKS.map((LINK) => (
+      <a href={LINK.HREF} class={cn("h-8 rounded-md px-3 text-current", "flex items-center justify-center", "transition-colors duration-300 ease-in-out", pathname === LINK.HREF || "/" + subpath?.[0] === LINK.HREF ? "bg-black dark:bg-blue-300 text-white dark:text-black dark:hover:bg-white hover:bg-blue-950" : "hover:bg-black/5 dark:hover:bg-white/20 hover:text-black dark:hover:text-white")}>
+                  {LINK.TEXT}
+      </a>
+      ))
+    }
+  </nav>
+
+  <div class="flex gap-1 mt-5">
+    <a href="/search" aria-label={`Search blog posts and projects on ${SITE.TITLE}`} class={cn("size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-colors duration-300 ease-in-out", pathname === "/search" || "/" + subpath?.[0] === "search" ? "pointer-events-none bg-black dark:bg-white text-white dark:text-black" : "")}>
+      <svg class="size-full">
+        <use href="/ui.svg#search"></use>
+      </svg>
+    </a>
+
+    <!-- <a href="/pl"  aria-label={`Translation for ${SITE.TITLE}`} class="language-toggle size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-colors duration-300 ease-in-out">
+      <p class="hover:scale-110 transition-all duration-300 ease-in-out" id="m-language-toggle">PL</p>
+    </a> -->
+
+
+
+    <button id="drawer-theme-button" aria-label={`Toggle light and dark theme`} class="size-9 rounded-full p-2 items-center justify-center bg-transparent hover:bg-black/5 dark:hover:bg-white/20 stroke-current hover:stroke-black hover:dark:stroke-white border border-black/10 dark:border-white/25 transition-colors duration-300 ease-in-out">
+      <svg class="block dark:hidden size-full">
+        <use href="/ui.svg#sun"></use>
+      </svg>
+      <svg class="hidden dark:block size-full">
+        <use href="/ui.svg#moon"></use>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  #drawer.open {
+    @apply h-full;
+  }
+</style>
+
