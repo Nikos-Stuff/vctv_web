@@ -16,13 +16,6 @@ const events = (await getCollection("events"))
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
     .slice(0, 3)
 
-const canalplus = (await getCollection("canalplus"))
-    .filter(event => !event.data.draft)
-    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-    .slice(0, 3)
-
-
-
 import TitleHeader from "../components/TitleHeader.astro";
 import Pricing_carousel from "../components/pricing_carousel.astro";
 
