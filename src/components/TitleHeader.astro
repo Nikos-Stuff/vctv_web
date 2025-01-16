@@ -7,7 +7,8 @@ const { text, sub } = Astro.props;
 <div id="animate" class="flex items-center justify-center">
     <div id="centerContent" class='relative w-full h-full flex items-center justify-center'>
         <div id="contentWrapper" class='p-5 text-center'>
-            <p id="title" data-taos-offset="300" class='delay-[600ms] duration-[600ms] taos:translate-y-[20%] [animation-iteration-count:infinite] taos:opacity-0  text-6xl md:text-7xl lg:text-9xl  uppercase text-white font-sixtyfour'>
+            <p id="title" data-taos-offset="300" class='text-pop-up-top delay-[600ms] duration-[600ms] taos:opacity-0 [animation-iteration-count:infinite]    text-6xl md:text-7xl lg:text-9xl  uppercase text-white font-sixtyfour'>
+                <!-- delay-[600ms] duration-[600ms] taos:translate-y-[20%] [animation-iteration-count:infinite]  -->
                 {text}
             </p>
             <div id="typewriter-text" class="typewriter-container text-white ">
@@ -19,6 +20,26 @@ const { text, sub } = Astro.props;
         </div>
     </div>
 </div>
+
+<style>
+
+.text-pop-up-top {
+	animation: text-pop-up-top 3.0s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes text-pop-up-top {
+  0% {
+    transform: translateY(0);
+    transform-origin: 50% 50%;
+    text-shadow: none;
+  }
+  100% {
+    transform: translateY(-10px);
+    transform-origin: 50% 50%;
+    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+
+</style>
 
 <!--<script is:inline data-astro-rerun async src="/js/headeranimation.js"/>-->
 <!--<script is:inline data-astro-rerun async src="/js/typewriter.js"/>-->

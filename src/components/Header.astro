@@ -56,13 +56,21 @@ import Container from "@components/Container.astro"
         </button>
       </div>
 
-      <div class="absolute w-full bottom-[1px] left-0 flex items-center justify-center overflow-hidden">
-        <div class="scrolling-text-container w-full h-full relative">
+      <div class="absolute w-full bottom-[2px] h-[15px] left-0 flex items-center justify-center overflow-hidden bg-black/50 rounded-md">
+        <div class="scrolling-text-container w-full h-full relative flex items-center">
           <div class="scrolling-text text-white text-sm whitespace-nowrap animate-marquee">
-            Witaj w serwisie VCTV! Włączmy prawdę raz na zawsze!
+            [DZISIAJ] Witaj na stronie VCTV! Twoje źródło wiadomości i inspiracji!
+            [BREAKING] Telewizor zepsuł się podczas prognozy pogody – podejrzewamy spisek chmur!
+            [FAKTY] Nikt nie wie, dlaczego kura przeszła na drugą stronę ulicy, ale my zbieramy dowody.
+            [WAŻNE] Kawa to życie. ☕ [TECHNO] HyperRail nadciąga – pociągi szybkie jak myśli o poniedziałku!
+            [PLOTKI] Królowa memów ogłosiła nowego kotka – internauci zachwyceni!
+            [OMG] Tak, ta strona to wielka beka, ale i tak ją kochasz!
+            [HUMOR] Próbujemy napisać coś poważnego... Ale nie wychodzi.
+            [OSTRZEŻENIE] Czytasz pasek wiadomości na własne ryzyko! 🛑
           </div>
         </div>
       </div>
+      
       
       
 
@@ -72,27 +80,21 @@ import Container from "@components/Container.astro"
 
 
 <style>
+
 .scrolling-text-container {
   position: relative;
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  height: 2rem; /* Adjust as needed for the height of the text */
 }
 
 .scrolling-text {
-  display: inline-block;
+  position: absolute;
   white-space: nowrap;
-  animation: marquee 10s linear infinite;
+  will-change: transform;
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(400%);
-  }
-  100% {
-    transform: translateX(-400%);
-  }
-}
 
 
 
@@ -117,7 +119,18 @@ import Container from "@components/Container.astro"
   }
 </style>
 
+ 
 <script is:inline>
+  function highlightBrackets() {
+    const scrollingText = document.querySelector(".scrolling-text");
+    if (scrollingText) {
+      scrollingText.innerHTML = scrollingText.textContent.replace(
+        /\[([^\]]+)]/g,
+        `<span class="bg-red-500/50 text-black rounded-2xl pl-5 pr-5 font-bold">[$1]</span>`
+      );
+    }
+  }
+
   function toggleDrawer() {
     const drawer = document.getElementById("drawer")
     const drawerButton = document.getElementById("header-drawer-button")
@@ -132,6 +145,35 @@ import Container from "@components/Container.astro"
 
   document.addEventListener("astro:after-swap", initializeDrawerButton)
   initializeDrawerButton()
+  highlightBrackets()
+</script>
+
+<script is:inline>
+function startMarquee() {
+  const scrollingText = document.querySelector(".scrolling-text");
+  const container = document.querySelector(".scrolling-text-container");
+
+  if (!scrollingText || !container) return;
+
+  // Initial setup
+  let containerWidth = container.offsetWidth;
+  let textWidth = scrollingText.offsetWidth;
+  let position = containerWidth; // Start just outside the right edge
+
+  function scroll() {
+    position -= 0.5; // Adjust speed by changing this value
+    if (position < -textWidth) {
+      position = containerWidth; // Reset position to the right edge
+    }
+    scrollingText.style.transform = `translateX(${position}px)`;
+    requestAnimationFrame(scroll);
+  }
+
+  scroll(); // Start the scrolling loop
+}
+
+document.addEventListener("DOMContentLoaded", startMarquee);
+startMarquee();
 </script>
 
 
