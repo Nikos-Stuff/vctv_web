@@ -16,7 +16,7 @@ const startAutoScroll = () => {
     autoScrollInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % totalSlides;
         updateCarousel();
-    }, 15000); // Scroll every 15 seconds
+    }, 25000); // Scroll every 25 seconds
 };
 
 // Stop auto-scroll temporarily
