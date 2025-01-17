@@ -99,7 +99,7 @@ export default function ArrowCard({ entry, pill }: Props) {
           </svg>
         </a>
       ) : entry.collection === "news" ? (
-        // Products cart design
+        // News cart design
         <a
         href={getEntryLink()}
         class="group  p-2 flex flex-col items-center border border-dashed rounded-lg hover:scale-105 hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-all duration-300 ease-in-out relative"
@@ -109,7 +109,7 @@ export default function ArrowCard({ entry, pill }: Props) {
             <img
               src={entry.data.imageUrl}
               alt={entry.data.title}
-              class="w-full h-full object-cover rounded-lg filter  transition-transform duration-300 ease-in-out"
+              class="w-screen h-60 object-cover rounded-lg filter  transition-transform duration-300 ease-in-out"
               decoding="async"
               loading="eager"
             />
