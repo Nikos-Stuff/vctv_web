@@ -61,6 +61,10 @@ export const LINKS: Links = [
     HREF: "/news",
   },
   {
+    TEXT: "Kreator",
+    HREF: "https://api.nikostuff.com/vctv/vctv_generator",
+  },
+  {
     TEXT: "O Nas",
     HREF: "/about",
   }
