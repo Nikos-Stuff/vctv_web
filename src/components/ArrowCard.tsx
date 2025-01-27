@@ -135,7 +135,7 @@ export default function ArrowCard({ entry, pill }: Props) {
         )}
       
         {/* Circle and Arrow */}
-        <div class=" absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-in-out">
+        <div class=" absolute inset-0 flex items-center justify-center group-hover:scale-100 transition-all duration-500 ease-in-out">
           {/* Circle Background */}
           <div class="opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-sm w-16 h-16 bg-white/70 dark:bg-black/70  rounded-full flex items-center justify-center transition-all duration-500 ease-in-out">
             {/* Arrow */}
