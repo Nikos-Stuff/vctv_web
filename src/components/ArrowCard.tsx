@@ -109,39 +109,48 @@ export default function ArrowCard({ entry, pill }: Props) {
             <img
               src={entry.data.imageUrl}
               alt={entry.data.title}
-              class="w-full h-60 object-cover rounded-lg filter  transition-transform duration-300 ease-in-out"
+              class="w-full h-60 object-cover rounded-lg filter transition-transform duration-300 ease-in-out"
               decoding="async"
               loading="eager"
             />
           </div>
         )}
-       
-       
+      
         {entry.data.imageUrl ? (
-        <div class="w-full mt-2 z-10 text-center group-hover:text-black group-hover:dark:text-white">
-          <div class="text-sm font-semibold text-black dark:text-white line-clamp-2">
-            {entry.data.title}
-            <p class="font-thin text-xs">{entry.data.summary}</p>
-          </div>
-        </div>
-        ) : (
-        
-
-        <div class="w-full h-full rounded-lg overflow-hidden flex justify-center items-center group-hover:scale-[0.90] transition-all duration-500 ease-in-out">
           <div class="w-full mt-2 z-10 text-center group-hover:text-black group-hover:dark:text-white">
-            <div class="text-lg font-semibold text-black dark:text-white line-clamp-2">
-             {entry.data.title}
-             <p class="font-thin text-xs">{entry.data.summary}</p>
+            <div class="text-sm font-semibold text-black dark:text-white line-clamp-2">
+              {entry.data.title}
+              <p class="font-thin text-xs">{entry.data.summary}</p>
             </div>
           </div>
-        </div>
-
+        ) : (
+          <div class="w-full h-full rounded-lg overflow-hidden flex justify-center items-center group-hover:scale-[0.90] transition-all duration-500 ease-in-out">
+            <div class="w-full mt-2 z-10 text-center group-hover:text-black group-hover:dark:text-white">
+              <div class="text-lg font-semibold text-black dark:text-white line-clamp-2">
+                {entry.data.title}
+                <p class="font-thin text-xs">{entry.data.summary}</p>
+              </div>
+            </div>
+          </div>
         )}
-
-
-
-
+      
+        {/* Circle and Arrow */}
+        <div class=" absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-in-out">
+          {/* Circle Background */}
+          <div class="opacity-0 group-hover:opacity-100 group-hover:backdrop-blur-sm w-16 h-16 bg-white/70 dark:bg-black/70  rounded-full flex items-center justify-center transition-all duration-500 ease-in-out">
+            {/* Arrow */}
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                     class="stroke-current group-hover:stroke-black group-hover:dark:stroke-white z-10 min-h-[20px] min-w-[20px]">
+                    <line x1="5" y1="12" x2="19" y2="12"
+                          class="scale-x-0 group-hover:scale-x-100 translate-x-4 group-hover:translate-x-1 transition-all duration-300 ease-in-out"/>
+                    <polyline points="12 5 19 12 12 19"
+                              class="translate-x-0 group-hover:translate-x-1 transition-all duration-300 ease-in-out"/>
+                </svg>
+          </div>
+        </div>
       </a>
+      
       ) : (
         // Normal Card Design
         <a
