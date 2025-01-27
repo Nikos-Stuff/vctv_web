@@ -102,25 +102,45 @@ export default function ArrowCard({ entry, pill }: Props) {
         // News cart design
         <a
         href={getEntryLink()}
-        class="group  p-2 flex flex-col items-center border border-dashed rounded-lg hover:scale-105 hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-all duration-300 ease-in-out relative"
+        class="group w-72 h-60 p-2 flex flex-col items-center border border-dashed rounded-lg hover:scale-105 hover:bg-black/5 hover:dark:bg-white/10 border-black/15 dark:border-white/20 transition-all duration-300 ease-in-out relative"
       >
         {entry.data.imageUrl && (
           <div class="w-full h-full rounded-lg overflow-hidden flex justify-center items-center group-hover:scale-[0.90] transition-all duration-500 ease-in-out">
             <img
               src={entry.data.imageUrl}
               alt={entry.data.title}
-              class="w-screen h-60 object-cover rounded-lg filter  transition-transform duration-300 ease-in-out"
+              class="w-full h-60 object-cover rounded-lg filter  transition-transform duration-300 ease-in-out"
               decoding="async"
               loading="eager"
             />
           </div>
         )}
-    
+       
+       
+        {entry.data.imageUrl ? (
         <div class="w-full mt-2 z-10 text-center group-hover:text-black group-hover:dark:text-white">
-          <div class="text-sm font-semibold text-gray-200 dark:text-white line-clamp-2">
+          <div class="text-sm font-semibold text-black dark:text-white line-clamp-2">
             {entry.data.title}
+            <p class="font-thin text-xs">{entry.data.summary}</p>
           </div>
         </div>
+        ) : (
+        
+
+        <div class="w-full h-full rounded-lg overflow-hidden flex justify-center items-center group-hover:scale-[0.90] transition-all duration-500 ease-in-out">
+          <div class="w-full mt-2 z-10 text-center group-hover:text-black group-hover:dark:text-white">
+            <div class="text-lg font-semibold text-black dark:text-white line-clamp-2">
+             {entry.data.title}
+             <p class="font-thin text-xs">{entry.data.summary}</p>
+            </div>
+          </div>
+        </div>
+
+        )}
+
+
+
+
       </a>
       ) : (
         // Normal Card Design
